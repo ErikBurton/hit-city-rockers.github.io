@@ -1,0 +1,220 @@
+:root {
+  --bg: #0f0f0f;
+  --panel: #1b1b1b;
+  --red: #c62828;
+  --cream: #f3e7d3;
+  --text: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: #fff;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  padding: 84px 0 56px;
+  border-bottom: 4px solid var(--red);
+  background:
+    radial-gradient(1100px 500px at 50% -10%, rgba(198,40,40,.35), transparent 60%),
+    radial-gradient(900px 450px at 15% 10%, rgba(255,255,255,.06), transparent 55%),
+    radial-gradient(900px 450px at 85% 20%, rgba(255,255,255,.05), transparent 60%),
+    linear-gradient(#000, #1a1a1a);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.03) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.04), transparent 35%),
+    radial-gradient(circle at 80% 60%, rgba(255,255,255,.03), transparent 40%);
+  opacity: .55;
+  mix-blend-mode: overlay;
+}
+
+.hero h1 {
+  position: relative;
+  margin: 0;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.05;
+  text-align: center;
+  text-shadow: 0 2px 0 rgba(0,0,0,.7);
+}
+
+.tagwrap {
+  text-align: center;
+}
+
+.tag {
+  margin: 22px auto 0;
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--red);
+  color: var(--cream);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: clamp(.95rem, 2.6vw, 1.2rem);
+  border: 1px solid rgba(0,0,0,.35);
+  box-shadow: 0 10px 22px rgba(0,0,0,.35);
+}
+
+.ctas {
+  margin-top: 28px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,.25);
+  text-decoration: none;
+  border-radius: 10px;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn.primary {
+  background: var(--red);
+  border-color: rgba(0,0,0,.35);
+  color: var(--cream);
+}
+
+/* SECTIONS */
+section {
+  padding: 56px 0;
+}
+
+h3 {
+  color: var(--red);
+  font-size: 1.7rem;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.two {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px;
+}
+
+.col {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* LISTS */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+ul li::before {
+  content: "• ";
+  color: var(--red);
+  font-weight: 900;
+}
+
+/* CARDS & PACKAGES */
+.card {
+  background: var(--panel);
+  padding: 22px;
+  border-left: 4px solid var(--red);
+}
+
+.testimonial {
+  font-style: italic;
+  color: #fff;
+  opacity: 0.95;
+}
+
+.packages {
+  background: #141414;
+  border-top: 4px solid var(--red);
+  border-bottom: 4px solid var(--red);
+}
+
+.package {
+  background: var(--panel);
+  padding: 20px;
+  margin: 18px 0;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.package h4 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+}
+
+/* BOOKING */
+.booking {
+  background: #000;
+  text-align: center;
+  border-top: 4px solid var(--red);
+  padding: 54px 0;
+}
+
+.booking p {
+  font-size: 1.15rem;
+  margin: 10px 0;
+}
+
+.cta {
+  margin-top: 18px;
+  font-size: 1.25rem;
+  color: var(--red);
+  font-weight: 900;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 18px 10px;
+  font-size: .9rem;
+  color: #aaa;
+  border-top: 1px solid #333;
+}
+
+.smallnote {
+  color: #bbb;
+  font-size: .95rem;
+}
