@@ -1,220 +1,364 @@
-:root {
-  --bg: #0f0f0f;
-  --panel: #1b1b1b;
-  --red: #c62828;
-  --cream: #f3e7d3;
-  --text: #f2f2f2;
+:root{
+  /* =====================================================
+     COLOR SYSTEM — PROVIDED POSTER PALETTE
+     ===================================================== */
+
+  /* Core backgrounds */
+  --bg:#15130F;        /* color-9 / color-10 */
+  --panel:#16140F;     /* color-8 */
+  --panel2:#1A1A1A;    /* color-7 */
+
+  /* Brand reds */
+  --red:#C53318;       /* color-3 */
+  --red2:#BD3017;      /* color-4 */
+  --red-dark:#692213;  /* color-5 */
+
+  /* Text tones */
+  --cream:#EECBA0;     /* color-1 */
+  --text:#F2E6D2;      /* derived light cream */
+  --muted:#6C6451;     /* color-2 */
+
+  /* Effects */
+  --shadow:rgba(0,0,0,.7);
+  --border:rgba(197,51,24,.55);
+
+  /* =====================================================
+     TYPOGRAPHY SCALE — RELATIVE TO POSTER TITLE
+     ===================================================== */
+
+  --title-size: clamp(6rem, 14vw, 10rem);
+  --section-title-size: calc(var(--title-size) * 0.32);
+  --subheading-size: calc(var(--title-size) * 0.22);
+  --body-size: calc(var(--title-size) * 0.16);
+  --small-size: calc(var(--title-size) * 0.13);
 }
 
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
+/* =====================================================
+   PAGE BACKGROUND (POSTER LOOK)
+   ===================================================== */
 
-a {
-  color: #fff;
-}
-
-.wrap {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* HERO */
-.hero {
-  position: relative;
-  padding: 84px 0 56px;
-  border-bottom: 4px solid var(--red);
+.poster-page{
   background:
-    radial-gradient(1100px 500px at 50% -10%, rgba(198,40,40,.35), transparent 60%),
-    radial-gradient(900px 450px at 15% 10%, rgba(255,255,255,.06), transparent 55%),
-    radial-gradient(900px 450px at 85% 20%, rgba(255,255,255,.05), transparent 60%),
-    linear-gradient(#000, #1a1a1a);
+    radial-gradient(900px 600px at 50% 0%, rgba(197,51,24,.22), transparent 55%),
+    linear-gradient(var(--panel2), var(--bg));
+  color: var(--text);
+  font-family:"Oswald", Arial, sans-serif;
+  margin:0;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,.03),
-      rgba(255,255,255,.03) 1px,
-      transparent 1px,
-      transparent 3px
+/* Constrain width to poster proportions */
+.poster{
+  max-width:860px;
+}
+
+/* =====================================================
+   TITLE / HERO
+   ===================================================== */
+
+.poster-title{
+  font-family:"Bebas Neue", sans-serif;
+  font-size:var(--title-size);
+  letter-spacing:10px;
+  line-height:.85;
+  text-transform:uppercase;
+  color:var(--red);
+  text-shadow:
+    0 10px 30px rgba(0,0,0,.7),
+    0 0 40px rgba(197,51,24,.35);
+}
+
+/* Tagline bar */
+.tagline-bar{
+  display:inline-block;
+  background:linear-gradient(180deg,var(--red),var(--red2));
+  color:var(--cream);
+  padding:14px 20px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  border:1px solid rgba(0,0,0,.35);
+  box-shadow:0 14px 28px rgba(0,0,0,.35);
+  font-size:var(--small-size);
+}
+
+/* =====================================================
+   BUTTONS (POSTER STYLE)
+   ===================================================== */
+
+.btn{
+  border-radius:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  padding:12px 16px;
+  font-size:var(--small-size);
+}
+
+.btn-poster-primary{
+  background:var(--red);
+  border:1px solid rgba(0,0,0,.35);
+  color:var(--cream);
+}
+
+.btn-poster-primary:hover{
+  filter:brightness(1.08);
+}
+
+.btn-poster-ghost{
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.25);
+  color:var(--text);
+}
+
+.btn-poster-ghost:hover{
+  border-color:rgba(255,255,255,.45);
+}
+
+/* =====================================================
+   SECTION HEADINGS
+   ===================================================== */
+
+.section-heading{
+  font-family:"Bebas Neue", sans-serif;
+  font-size:var(--section-title-size);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--cream);
+  margin:0 0 12px;
+}
+
+.section-subheading,
+.box-title{
+  font-family:"Bebas Neue", sans-serif;
+  font-size:var(--subheading-size);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--cream);
+  margin-bottom:10px;
+}
+
+/* =====================================================
+   BODY TEXT
+   ===================================================== */
+
+.poster-body,
+.booking-lines,
+.box-body{
+  font-size:var(--body-size);
+  line-height:1.55;
+  font-weight:300;
+  color:var(--text);
+}
+
+/* =====================================================
+   VINYL GRAPHIC
+   ===================================================== */
+
+/* SPIN ANIMATION */
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* VINYL RECORD */
+.vinyl{
+  width:220px;
+  aspect-ratio:1 / 1;
+  border-radius:50%;
+  position:relative;
+
+  /* Realistic vinyl: grooves + subtle sheen + base color */
+  background:
+    /* moving highlight sheen (rotation visible) */
+    conic-gradient(
+      from 25deg,
+      rgba(255,255,255,.10),
+      rgba(255,255,255,0) 70deg,
+      rgba(0,0,0,.18) 140deg,
+      rgba(255,255,255,0) 240deg,
+      rgba(0,0,0,.12)
     ),
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,.04), transparent 35%),
-    radial-gradient(circle at 80% 60%, rgba(255,255,255,.03), transparent 40%);
-  opacity: .55;
-  mix-blend-mode: overlay;
+    /* circular grooves */
+    repeating-radial-gradient(
+      circle at center,
+      rgba(0,0,0,.22) 0 2px,
+      rgba(0,0,0,0) 2px 6px
+    ),
+    /* dark vinyl base */
+    radial-gradient(circle at 35% 35%,
+      rgba(255,255,255,.10),
+      rgba(0,0,0,0) 45%
+    ),
+    radial-gradient(circle,
+      #111 0%,
+      #0a0a0a 55%,
+      #000 100%
+    );
+
+  border:2px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.65),
+    inset 0 0 0 2px rgba(255,255,255,.05);
+
+  /* Spin */
+  animation: vinyl-spin 18s linear infinite;
+  transform-origin: 50% 50%;
 }
 
-.hero h1 {
-  position: relative;
-  margin: 0;
-  color: var(--red);
-  text-transform: uppercase;
-  letter-spacing: 6px;
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  line-height: 1.05;
-  text-align: center;
-  text-shadow: 0 2px 0 rgba(0,0,0,.7);
+/* CENTER LABEL (RED) */
+.vinyl-center{
+  position:absolute;
+  inset:50%;
+  width:74px;
+  height:74px;
+  transform:translate(-50%, -50%);
+  border-radius:50%;
+
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 45%),
+    radial-gradient(circle, var(--red) 0%, var(--red2) 65%, var(--red-dark) 100%);
+
+  box-shadow:
+    0 0 0 6px #000,
+    0 0 0 8px rgba(255,255,255,.06);
 }
 
-.tagwrap {
-  text-align: center;
+/* SPINDLE HOLE */
+.vinyl-center::after{
+  content:"";
+  position:absolute;
+  inset:50%;
+  width:12px;
+  height:12px;
+  transform:translate(-50%, -50%);
+  border-radius:50%;
+  background:#000;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.08);
 }
 
-.tag {
-  margin: 22px auto 0;
-  display: inline-block;
-  padding: 12px 18px;
-  background: var(--red);
-  color: var(--cream);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: clamp(.95rem, 2.6vw, 1.2rem);
-  border: 1px solid rgba(0,0,0,.35);
-  box-shadow: 0 10px 22px rgba(0,0,0,.35);
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce){
+  .vinyl{ animation:none; }
 }
 
-.ctas {
-  margin-top: 28px;
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
+ 
+
+
+/* =====================================================
+   LISTS
+   ===================================================== */
+
+.poster-list{
+  list-style:none;
+  padding:0;
+  margin:0;
 }
 
-.btn {
-  padding: 12px 16px;
-  border: 1px solid rgba(255,255,255,.25);
-  text-decoration: none;
-  border-radius: 10px;
-  background: rgba(0,0,0,.35);
-  color: #fff;
-  font-weight: 700;
+.poster-list li{
+  font-size:var(--body-size);
+  margin:10px 0;
+  padding-left:18px;
+  position:relative;
+  font-weight:300;
 }
 
-.btn.primary {
-  background: var(--red);
-  border-color: rgba(0,0,0,.35);
-  color: var(--cream);
+.poster-list li::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  top:0;
+  color:var(--red);
+  font-weight:900;
 }
 
-/* SECTIONS */
-section {
-  padding: 56px 0;
+/* =====================================================
+   BOTTOM BOXES
+   ===================================================== */
+
+.poster-box{
+  background:linear-gradient(180deg,var(--panel),#0b0b0b);
+  border:2px solid var(--border);
+  box-shadow:0 14px 30px rgba(0,0,0,.55);
+  padding:18px;
 }
 
-h3 {
-  color: var(--red);
-  font-size: 1.7rem;
-  margin: 0 0 18px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.box-body{
+  font-style:italic;
+  opacity:.95;
 }
 
-.two {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 34px;
+/* =====================================================
+   BOOKING
+   ===================================================== */
+
+.booking-lines{
+  text-align:center;
 }
 
-.col {
-  flex: 1;
-  min-width: 280px;
+.booking-link{
+  color:var(--text);
+  text-decoration:none;
 }
 
-/* LISTS */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.booking-link:hover{
+  color:var(--red);
 }
 
-ul li {
-  margin: 10px 0;
+.booking-muted{
+  font-size:var(--small-size);
+  color:var(--muted);
 }
 
-ul li::before {
-  content: "• ";
-  color: var(--red);
-  font-weight: 900;
+/* =====================================================
+   BOTTOM RED BANNER
+   ===================================================== */
+
+.bottom-banner{
+  background:linear-gradient(180deg,var(--red),var(--red2));
+  color:var(--cream);
+  padding:16px 18px;
+  border:1px solid rgba(0,0,0,.35);
+  letter-spacing:1px;
+  font-weight:900;
+  text-transform:uppercase;
+  font-size:var(--small-size);
+  box-shadow:0 14px 26px rgba(0,0,0,.45);
 }
 
-/* CARDS & PACKAGES */
-.card {
-  background: var(--panel);
-  padding: 22px;
-  border-left: 4px solid var(--red);
+.bottom-banner-light{
+  color:var(--text);
+  opacity:.95;
 }
 
-.testimonial {
-  font-style: italic;
-  color: #fff;
-  opacity: 0.95;
+/* =====================================================
+   MOBILE ADJUSTMENTS
+   ===================================================== */
+
+@media (max-width:576px){
+  :root{
+    --section-title-size: calc(var(--title-size) * 0.28);
+    --subheading-size: calc(var(--title-size) * 0.20);
+    --body-size: calc(var(--title-size) * 0.15);
+  }
+
+  .vinyl{
+    width:170px;
+  }
+
+  .tagline-bar{
+    display:block;
+  }
 }
 
-.packages {
-  background: #141414;
-  border-top: 4px solid var(--red);
-  border-bottom: 4px solid var(--red);
-}
-
-.package {
-  background: var(--panel);
-  padding: 20px;
-  margin: 18px 0;
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.package h4 {
-  margin: 0 0 10px;
-  font-size: 1.25rem;
-}
-
-/* BOOKING */
-.booking {
-  background: #000;
-  text-align: center;
-  border-top: 4px solid var(--red);
-  padding: 54px 0;
-}
-
-.booking p {
-  font-size: 1.15rem;
-  margin: 10px 0;
-}
-
-.cta {
-  margin-top: 18px;
-  font-size: 1.25rem;
-  color: var(--red);
-  font-weight: 900;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 18px 10px;
-  font-size: .9rem;
-  color: #aaa;
-  border-top: 1px solid #333;
-}
-
-.smallnote {
-  color: #bbb;
-  font-size: .95rem;
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
